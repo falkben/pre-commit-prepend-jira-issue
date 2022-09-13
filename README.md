@@ -1,0 +1,1 @@
+# pre-commit-prepend-jira-ticket
