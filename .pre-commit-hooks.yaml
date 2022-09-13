@@ -1,0 +1,7 @@
+- id: prepend-jira-ticket
+  name: Prepend Jira Ticket
+  entry: prepend_jira_ticket.sh
+  language: python
+  description: This hook prepends a Jira ticket to a commit message
+  always_run: true
+  stages: [commit-msg]
