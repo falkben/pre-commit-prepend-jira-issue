@@ -10,7 +10,8 @@ A [pre-commit](https://pre-commit.com/) hook to prepend a Jira ticket to a commi
 
 ## Inspiration
 
-1. <https://agussarwono.com/article/add-ticket-to-your-commit/>
-2. <https://github.com/erskaggs/jira-pre-commit>
+1. <https://github.com/radix-ai/auto-smart-commit>
+2. <https://agussarwono.com/article/add-ticket-to-your-commit/>
+3. <https://github.com/erskaggs/jira-pre-commit>
 
 ## Developer Notes
