@@ -15,3 +15,7 @@ def test_get_commit_msg():
 
 def test_write_commit_msg():
     ...
+
+
+def test_ignore_merge_commit():
+    ...

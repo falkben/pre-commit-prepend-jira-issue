@@ -48,8 +48,6 @@ def main(argv: Sequence[str] | None = None) -> int:
 
     args = parser.parse_args(argv)
 
-    # todo: ignore merge requests
-
     git_branch_name = get_branch_name()
     branch_jira_issue = extract_jira_issue(git_branch_name)
 
@@ -58,6 +56,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 0
 
     commit_msg = get_commit_msg(args.commit_msg_filepath)
+
+    # ignore merge requests
+    if re.match("^Merge commit '", commit_msg):
+        return 0
 
     # check if commit message already has the jira ticket in it's name
     commit_msg_jira_issue = extract_jira_issue(commit_msg)
