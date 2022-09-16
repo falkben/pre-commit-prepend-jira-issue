@@ -1,7 +1,7 @@
-- id: prepend-jira-ticket
-  name: Prepend Jira Ticket
-  entry: prepend_jira_ticket.sh
+- id: prepend-jira-issue
+  name: Prepend Jira Issue
+  entry: prepend_jira_issue
   language: python
-  description: This hook prepends a Jira ticket to a commit message
+  description: This hook prepends a Jira issue to a commit message
   always_run: true
   stages: [commit-msg]

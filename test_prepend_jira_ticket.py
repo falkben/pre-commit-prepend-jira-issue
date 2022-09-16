@@ -1,11 +1,11 @@
-import prepend_jira_ticket
+import prepend_jira_issue
 
 
 def test_get_branch_name():
     ...
 
 
-def test_extract_jira_ticket():
+def test_extract_jira_issue():
     ...
 
 

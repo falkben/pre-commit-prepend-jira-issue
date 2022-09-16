@@ -7,6 +7,10 @@ from typing import Sequence
 
 
 def run_command(command: str) -> str:
+    """Run a command and return its output
+
+    If the command fails, return an empty string"""
+
     try:
         stdout: str = subprocess.check_output(command.split()).decode("utf-8").strip()
     except Exception:
@@ -16,17 +20,16 @@ def run_command(command: str) -> str:
 
 def get_branch_name() -> str:
     # git rev-parse --abbrev-ref HEAD
-    #   returns HEAD if in detatched state
+    #   returns HEAD if in detached state
     # git symbolic-ref --short HEAD
-    #   returns fatal: ref HEAD is not a symbolic ref if in detatched state
+    #   returns fatal: ref HEAD is not a symbolic ref if in detached state
     return run_command("git symbolic-ref --short HEAD")
 
 
-def extract_jira_issue(message: str) -> str | None:
+def extract_jira_issue(content: str) -> str | None:
     project_key, issue_number = r"[A-Z]{2,}", r"[0-9]+"
-    match = re.search(f"{project_key}-{issue_number}", message)
+    match = re.search(f"{project_key}-{issue_number}", content)
     if match:
-        # todo: what if there's more than one?
         return match.group(0)
     return None
 
@@ -37,7 +40,7 @@ def get_commit_msg(commit_msg_filepath: str) -> str:
     return msg
 
 
-def write_commit_msg(commit_msg_filepath: str, commit_msg: str):
+def write_commit_msg(commit_msg_filepath: str, commit_msg: str) -> None:
     with open(commit_msg_filepath, "w") as f:
         f.write(commit_msg)
 
@@ -61,13 +64,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     if re.match("^Merge commit '", commit_msg):
         return 0
 
-    # check if commit message already has the jira ticket in it's name
+    # check if commit message already has a jira issue in it's name
     commit_msg_jira_issue = extract_jira_issue(commit_msg)
-    # if jira issue already in commit message, nothing to do
-    if commit_msg_jira_issue and branch_jira_issue == commit_msg_jira_issue:
+    # if jira issue already in commit message, skip
+    if commit_msg_jira_issue:
         return 0
 
-    # prepend the jira ticket to the commit message if it's missing
+    # prepend the jira issue to the commit message if it's missing
     new_commit_msg = f"{branch_jira_issue}: {commit_msg}"
     write_commit_msg(args.commit_msg_filepath, new_commit_msg)
 
