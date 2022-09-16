@@ -1,8 +1,10 @@
-# pre-commit-prepend-jira-issue
+# pre-commit prepend jira issue
 
-A [pre-commit](https://pre-commit.com/) hook to prepend a Jira issue to a commit message (extracted from the branch name).
+A [pre-commit](https://pre-commit.com/) hook to prepend a Jira issue to a commit message, extracted from the branch name.
 
 ## Usage
+
+todo
 
 ## License
 
@@ -15,3 +17,5 @@ A [pre-commit](https://pre-commit.com/) hook to prepend a Jira issue to a commit
 3. <https://github.com/erskaggs/jira-pre-commit>
 
 ## Developer Notes
+
+todo
