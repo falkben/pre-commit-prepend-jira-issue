@@ -35,9 +35,23 @@ def extract_jira_issue(content: str) -> str | None:
 
 
 def get_commit_msg(commit_msg_filepath: str) -> str:
+    """Get the commit message
+
+    Ignore comment lines as those aren't included in the commit message
+    """
+
+    # todo: instead of removing comment lines from the commit message, we should instead
+    # skip them in our regex search
     with open(commit_msg_filepath) as f:
-        msg = f.read()
+        msg = ""
+        for line in f:
+            if not line.startswith("#"):
+                msg += line
     return msg
+
+
+def prepend_jira_issue(msg: str, issue: str) -> str:
+    return f"{issue}: {msg}"
 
 
 def write_commit_msg(commit_msg_filepath: str, commit_msg: str) -> None:
@@ -70,8 +84,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     if commit_msg_jira_issue:
         return 0
 
-    # prepend the jira issue to the commit message if it's missing
-    new_commit_msg = f"{branch_jira_issue}: {commit_msg}"
+    new_commit_msg = prepend_jira_issue(commit_msg, branch_jira_issue)
+
     write_commit_msg(args.commit_msg_filepath, new_commit_msg)
 
     return 0
