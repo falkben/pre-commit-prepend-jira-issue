@@ -2,7 +2,9 @@
 
 A [pre-commit](https://pre-commit.com/) hook to prepend a Jira issue to a commit message, extracted from the current branch name.
 
-## Usage
+With this hook installed, when you commit, if a Jira issue is found in your branch name, and a Jira issue is not already included in your commit message, the Jira issue from the branch name will be prepended to your commit message.
+
+## Install
 
 1. Install [`pre-commit`](https://pre-commit.com/) if it's not already installed
 
@@ -12,9 +14,9 @@ A [pre-commit](https://pre-commit.com/) hook to prepend a Jira issue to a commit
     pipx install pre-commit
     ```
 
-    Or one of the ways mentioned in the pre-commit [installation docs](https://pre-commit.com/#installation).
+    Or any of the ways mentioned in the pre-commit [installation docs](https://pre-commit.com/#installation).
 
-2. Add this hook to your `.pre-commit-config.yaml` file.
+2. Add this hook to your `.pre-commit-config.yaml` file (create in root directory if it doesn't exist already).
 
     ```yaml
     repos:
@@ -25,7 +27,7 @@ A [pre-commit](https://pre-commit.com/) hook to prepend a Jira issue to a commit
             stages: [commit-msg]
     ```
 
-3. Install the hook
+3. Install this hook
 
     ```command
     pre-commit install --hook-type commit-msg
