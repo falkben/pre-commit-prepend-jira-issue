@@ -24,7 +24,7 @@ With this hook installed, when you commit, if a Jira issue is found in your bran
         rev: v0.0.1
         hooks:
         - id: prepend-jira-issue
-            stages: [commit-msg]
+          stages: [commit-msg]
     ```
 
 3. Install this hook
