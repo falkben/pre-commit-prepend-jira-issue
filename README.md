@@ -47,4 +47,17 @@ With this hook installed, when you commit, if a Jira issue is found in your bran
 
 ## Developer Notes
 
-todo
+### Install for local dev
+
+Create virtual environment then install:
+
+```bash
+pip install -r dev-requirements.txt
+pip install -e ".[dev]"
+```
+
+## Create dev dependency lock file
+
+```bash
+pip-compile --extra dev -o dev-requirements.txt pyproject.toml
+```

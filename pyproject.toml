@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "prepend_jira_issue"
+version = "0.0.1"
+authors = [
+  { name="Benjamin Falk", email="falk.ben@gmail.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/falkben/pre-commit-prepend-jira-issue"
+
+[project.scripts]
+prepend_jira_issue = "prepend_jira_issue:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
