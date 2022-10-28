@@ -20,11 +20,11 @@ With this hook installed, when you commit, if a Jira issue is found in your bran
 
     ```yaml
     repos:
-    - repo: https://github.com/falkben/pre-commit-prepend-jira-issue
-        rev: v0.0.1
+      - repo: https://github.com/falkben/pre-commit-prepend-jira-issue
+        rev: v0.0.2
         hooks:
-        - id: prepend-jira-issue
-          stages: [commit-msg]
+          - id: prepend-jira-issue
+            stages: [commit-msg]
     ```
 
 3. Install this hook
